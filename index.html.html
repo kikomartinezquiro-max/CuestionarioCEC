@@ -1,0 +1,2145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="format-detection" content="telephone=no">
+<title>Cuestionario Inicial – Método Integrativo CEC®</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    --ivory: #F7F4EE;
+    --cream: #EDE8DF;
+    --warm-white: #FAF8F4;
+    --sage: #7A8C6E;
+    --sage-light: #9AAB8C;
+    --sage-dark: #5A6B52;
+    --clay: #C4866A;
+    --clay-light: #D9A48E;
+    --deep: #2C2C2A;
+    --mid: #5A5752;
+    --light: #9A9590;
+    --gold: #B89A6A;
+    --gold-light: #D4B98C;
+    --border: #D8D2C8;
+    --section-bg: #FFFFFF;
+    --input-bg: #FDFCFA;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow: 0 2px 20px rgba(44,44,42,0.07);
+    --shadow-sm: 0 1px 8px rgba(44,44,42,0.05);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 300;
+    background: var(--ivory);
+    color: var(--deep);
+    line-height: 1.7;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--deep);
+    color: var(--cream);
+    padding: 48px 24px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(122,140,110,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 50%, rgba(184,154,106,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .header-ornament {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--gold-light);
+    margin-bottom: 20px;
+    opacity: 0.9;
+  }
+  .header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(28px, 5vw, 44px);
+    line-height: 1.2;
+    letter-spacing: 1px;
+    color: var(--warm-white);
+    margin-bottom: 8px;
+  }
+  .header h1 span { color: var(--gold-light); }
+  .header-reg {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--sage-light);
+    margin-bottom: 20px;
+  }
+  .header-lema {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(15px, 2.5vw, 19px);
+    color: var(--cream);
+    opacity: 0.75;
+    margin-top: 12px;
+  }
+  .header-by {
+    margin-top: 16px;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    color: var(--gold-light);
+    opacity: 0.8;
+    text-transform: uppercase;
+  }
+
+  /* ── PROGRESS BAR ── */
+  .progress-wrap {
+    background: var(--deep);
+    padding: 0 24px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .progress-bar-bg {
+    background: rgba(255,255,255,0.1);
+    border-radius: 100px;
+    height: 3px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--sage-light), var(--gold-light));
+    border-radius: 100px;
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+  .progress-text {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.4);
+    text-align: right;
+    margin-bottom: 6px;
+  }
+
+  /* ── CONTAINER ── */
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 32px 16px 80px;
+  }
+
+  /* ── INTRO BOX ── */
+  .intro-box {
+    background: var(--section-bg);
+    border-radius: var(--radius);
+    padding: 32px;
+    margin-bottom: 28px;
+    border-left: 3px solid var(--sage);
+    box-shadow: var(--shadow-sm);
+  }
+  .intro-box p {
+    font-size: 15px;
+    color: var(--mid);
+    line-height: 1.8;
+  }
+  .intro-box p + p { margin-top: 12px; }
+  .intro-box strong { color: var(--deep); font-weight: 500; }
+
+  /* ── SECTION ── */
+  .section {
+    background: var(--section-bg);
+    border-radius: var(--radius);
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .section:hover { box-shadow: 0 4px 28px rgba(44,44,42,0.1); }
+
+  .section-header {
+    padding: 22px 28px 18px;
+    border-bottom: 1px solid var(--cream);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .section-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+    background: var(--cream);
+  }
+  .section-title-wrap { flex: 1; }
+  .section-number {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--light);
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(19px, 3vw, 24px);
+    font-weight: 400;
+    color: var(--deep);
+    line-height: 1.2;
+  }
+  .section-toggle {
+    font-size: 20px;
+    color: var(--light);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+  .section.open .section-toggle { transform: rotate(180deg); }
+
+  .section-body {
+    padding: 28px;
+    display: none;
+  }
+  .section.open .section-body { display: block; }
+
+  /* ── FIELDS ── */
+  .field {
+    margin-bottom: 24px;
+  }
+  .field:last-child { margin-bottom: 0; }
+
+  .field label {
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--mid);
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  .field label .req {
+    color: var(--clay);
+    margin-left: 3px;
+  }
+  .field label .hint {
+    display: block;
+    font-size: 12px;
+    color: var(--light);
+    font-weight: 300;
+    margin-top: 2px;
+    font-style: italic;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="date"],
+  input[type="number"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 13px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: 'Jost', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px; /* ≥16px prevents iOS auto-zoom on focus */
+    font-weight: 300;
+    color: var(--deep);
+    background: var(--input-bg);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border-radius: var(--radius-sm); /* repeated intentionally for iOS Safari */
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--sage);
+    box-shadow: 0 0 0 3px rgba(122,140,110,0.12);
+  }
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+    line-height: 1.6;
+  }
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239A9590' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 44px;
+    cursor: pointer;
+  }
+
+  /* ── RADIO / CHECKBOX ── */
+  .options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  .options-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+  .options-grid.cols-1 { grid-template-columns: 1fr; }
+
+  .option-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 13px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    background: var(--input-bg);
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.4;
+  }
+  .option-item:hover { border-color: var(--sage-light); background: rgba(122,140,110,0.04); }
+  .option-item input[type="radio"],
+  .option-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    margin: 0;
+    padding: 0;
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    accent-color: var(--sage);
+    -webkit-appearance: none;
+    appearance: none;
+    position: relative;
+    flex-shrink: 0;
+    margin-top: 1px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .option-item input[type="radio"] { border-radius: 50%; }
+  .option-item input[type="radio"]:checked,
+  .option-item input[type="checkbox"]:checked {
+    background: var(--sage);
+    border-color: var(--sage);
+  }
+  .option-item input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: white;
+  }
+  .option-item input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+  }
+  .option-item:has(input:checked) {
+    border-color: var(--sage);
+    background: rgba(122,140,110,0.07);
+    color: var(--deep);
+  }
+
+  /* ── SCALE ── */
+  .scale-wrap {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .scale-btn {
+    flex: 1;
+    min-width: 36px;
+    max-width: 52px;
+    padding: 10px 4px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--input-bg);
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--mid);
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.15s;
+    -webkit-appearance: none;
+  }
+  .scale-btn:hover { border-color: var(--sage-light); color: var(--sage-dark); }
+  .scale-btn.selected {
+    background: var(--sage);
+    border-color: var(--sage);
+    color: white;
+    font-weight: 500;
+  }
+  .scale-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+    font-size: 11px;
+    color: var(--light);
+    font-style: italic;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: var(--cream);
+    margin: 24px 0;
+  }
+
+  .subsection-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--deep);
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--cream);
+  }
+
+  /* ── SPECIAL BOX ── */
+  .info-box {
+    background: rgba(122,140,110,0.08);
+    border: 1px solid rgba(122,140,110,0.25);
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    font-size: 13.5px;
+    color: var(--sage-dark);
+    line-height: 1.7;
+  }
+  .info-box.clay {
+    background: rgba(196,134,106,0.07);
+    border-color: rgba(196,134,106,0.2);
+    color: #8B5A42;
+  }
+  .info-box.gold {
+    background: rgba(184,154,106,0.08);
+    border-color: rgba(184,154,106,0.25);
+    color: #7A6240;
+  }
+
+  /* ── NUTRITION TOGGLE ── */
+  .nutrition-toggle-section {
+    background: var(--section-bg);
+    border-radius: var(--radius);
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .nutrition-banner {
+    background: linear-gradient(135deg, var(--sage-dark) 0%, #3D5C38 100%);
+    padding: 28px;
+    color: white;
+  }
+  .nutrition-banner h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    color: var(--gold-light);
+  }
+  .nutrition-banner p {
+    font-size: 14px;
+    line-height: 1.7;
+    opacity: 0.9;
+  }
+  .nutrition-checkbox-area {
+    padding: 24px 28px;
+    border-top: 1px solid var(--cream);
+  }
+  .nutrition-activate-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    cursor: pointer;
+    padding: 18px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
+    transition: all 0.2s;
+  }
+  .nutrition-activate-label:hover { border-color: var(--sage); }
+  .nutrition-activate-label input[type="checkbox"] {
+    width: 22px; height: 22px; min-width: 22px;
+    margin: 0; padding: 0;
+    -webkit-appearance: none; appearance: none;
+    border: 2px solid var(--sage); border-radius: 4px;
+    background: white; cursor: pointer;
+    position: relative; transition: all 0.15s;
+  }
+  .nutrition-activate-label input[type="checkbox"]:checked {
+    background: var(--sage); border-color: var(--sage);
+  }
+  .nutrition-activate-label input[type="checkbox"]:checked::after {
+    content: '✓'; position: absolute;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    color: white; font-size: 14px; font-weight: 700; line-height: 1;
+  }
+  .nutrition-activate-label:has(input:checked) { border-color: var(--sage); background: rgba(122,140,110,0.05); }
+  .nutrition-activate-text strong { display: block; color: var(--deep); font-weight: 500; margin-bottom: 3px; font-size: 15px; }
+  .nutrition-activate-text span { font-size: 13px; color: var(--light); }
+
+  .nutrition-fields { display: none; padding: 0 28px 28px; }
+  .nutrition-fields.visible { display: block; }
+
+  /* ── CONSENT ── */
+  .consent-section {
+    background: var(--section-bg);
+    border-radius: var(--radius);
+    padding: 32px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    border-top: 3px solid var(--gold);
+  }
+  .consent-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--deep);
+    margin-bottom: 16px;
+  }
+  .consent-text {
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--mid);
+    background: var(--cream);
+    padding: 20px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 20px;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid var(--border);
+  }
+  .consent-checks { display: flex; flex-direction: column; gap: 14px; }
+  .consent-check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .consent-check-item:hover { border-color: var(--gold); }
+  .consent-check-item input[type="checkbox"] {
+    width: 20px; height: 20px; min-width: 20px;
+    margin: 0; padding: 0; margin-top: 1px;
+    -webkit-appearance: none; appearance: none;
+    border: 1.5px solid var(--border); border-radius: 4px;
+    background: white; cursor: pointer; position: relative;
+    transition: all 0.15s;
+  }
+  .consent-check-item input:checked { background: var(--gold); border-color: var(--gold); }
+  .consent-check-item input:checked::after {
+    content: '✓'; position: absolute;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    color: white; font-size: 12px; font-weight: 700; line-height: 1;
+  }
+  .consent-check-item:has(input:checked) { border-color: var(--gold); background: rgba(184,154,106,0.06); }
+  .consent-check-item p { font-size: 14px; color: var(--mid); line-height: 1.6; }
+  .consent-check-item p strong { color: var(--deep); font-weight: 500; }
+
+  /* ── CTA BUTTON ── */
+  .btn-primary {
+    display: block;
+    width: 100%;
+    padding: 18px 32px;
+    background: var(--deep);
+    color: var(--cream);
+    border: none;
+    border-radius: var(--radius);
+    font-family: 'Jost', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s;
+    text-align: center;
+    margin-top: 8px;
+    -webkit-appearance: none;
+  }
+  .btn-primary:hover { background: var(--sage-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(44,44,42,0.2); }
+  .btn-primary:active { transform: translateY(0); }
+  .btn-primary.secondary {
+    background: transparent;
+    color: var(--deep);
+    border: 1.5px solid var(--deep);
+    margin-top: 12px;
+  }
+  .btn-primary.secondary:hover { background: var(--cream); }
+
+  /* ── SIGNATURE ── */
+  .signature-wrap {
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: white;
+  }
+  .signature-wrap canvas {
+    display: block;
+    width: 100%;
+    height: 140px;
+    touch-action: none;
+    cursor: crosshair;
+  }
+  .signature-controls {
+    display: flex;
+    justify-content: flex-end;
+    padding: 8px 12px;
+    border-top: 1px solid var(--cream);
+    background: var(--cream);
+    gap: 10px;
+  }
+  .btn-clear-sig {
+    font-size: 12px;
+    color: var(--light);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Jost', sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: color 0.2s;
+  }
+  .btn-clear-sig:hover { color: var(--clay); }
+
+  /* ── ER-CEC SCALE ── */
+  .er-cec-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .er-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .er-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .er-label span:first-child { font-size: 14px; color: var(--deep); font-weight: 400; }
+  .er-score {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--sage);
+    min-width: 32px;
+    text-align: right;
+  }
+  .er-slider {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    border-radius: 100px;
+    background: var(--cream);
+    outline: none;
+    cursor: pointer;
+    border: none;
+    padding: 0; /* iOS needs explicit 0 padding */
+  }
+  .er-slider::-webkit-slider-runnable-track {
+    height: 4px;
+    border-radius: 100px;
+    background: var(--cream);
+  }
+  .er-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--sage);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(90,107,82,0.3);
+    transition: transform 0.15s;
+    margin-top: -11px; /* centers thumb on track for WebKit */
+  }
+  .er-slider::-webkit-slider-thumb:hover { transform: scale(1.15); }
+  .er-slider::-moz-range-thumb {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--sage);
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 8px rgba(90,107,82,0.3);
+  }
+  .er-total-box {
+    background: var(--deep);
+    color: var(--cream);
+    border-radius: var(--radius-sm);
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+  }
+  .er-total-box .label { font-size: 13px; letter-spacing: 1px; text-transform: uppercase; opacity: 0.6; }
+  .er-total-box .score {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 600;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+  .er-total-box .max { font-size: 13px; opacity: 0.4; }
+
+  /* ── GENDER CONDITIONAL ── */
+  .female-fields { display: none; }
+  .female-fields.visible { display: block; }
+
+  /* ── VALIDATION ── */
+  .error-msg {
+    display: none;
+    color: var(--clay);
+    font-size: 12px;
+    margin-top: 6px;
+  }
+  .field.has-error input,
+  .field.has-error select,
+  .field.has-error textarea {
+    border-color: var(--clay);
+  }
+  .field.has-error .error-msg { display: block; }
+
+  /* ── FOOTER ── */
+  .form-footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    color: var(--light);
+    letter-spacing: 0.5px;
+    line-height: 1.8;
+  }
+
+  /* ── PRINT / PDF ── */
+  @media print {
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { background: white; font-size: 12px; }
+    .progress-wrap, .btn-primary, .signature-controls, .section-toggle, .intro-box,
+    .nutrition-banner, .nutrition-activate-label, .btn-clear-sig, .form-footer,
+    .header::before { display: none !important; }
+    .header { padding: 24px; background: #2C2C2A !important; page-break-inside: avoid; }
+    .section { box-shadow: none; border: 1px solid #ddd; margin-bottom: 12px; page-break-inside: avoid; }
+    .section-body { display: block !important; }
+    .section-header { cursor: default; padding: 14px 20px 10px; border-bottom: 1px solid #eee; }
+    .container { padding: 16px; max-width: 100%; }
+    .nutrition-fields { display: block !important; }
+    textarea { border: 1px solid #ccc; min-height: 50px; }
+    input, select { border: 1px solid #ccc; }
+    .er-slider { display: none; }
+    .er-row::after { content: '______ / 10'; font-size: 12px; color: #999; }
+    .consent-text { max-height: none; }
+    .option-item { border: 1px solid #ddd; padding: 8px 12px; }
+    .scale-btn { padding: 6px; border: 1px solid #ccc; }
+    h1 { font-size: 24px !important; }
+    .section-title { font-size: 17px !important; }
+  }
+
+  @media (max-width: 480px) {
+    .section-header { padding: 18px 18px 14px; }
+    .section-body { padding: 20px 18px; }
+    .options-grid.cols-2 { grid-template-columns: 1fr; }
+    .scale-btn { min-width: 30px; padding: 8px 2px; font-size: 13px; }
+    .header { padding: 36px 20px 32px; }
+    .consent-section { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-ornament">✦ Cuestionario Inicial de Anamnesis ✦</div>
+  <h1>Método Integrativo <span>CEC®</span></h1>
+  <div class="header-reg">CUERPO · EMOCIÓN · CONSCIENCIA</div>
+  <div class="header-lema">"El cuerpo escucha. La emoción guía. La consciencia transforma."</div>
+  <div class="header-by">Creado por Kiko Martínez</div>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-wrap">
+  <div class="progress-text" id="progressText">Completado: 0%</div>
+  <div class="progress-bar-bg">
+    <div class="progress-bar-fill" id="progressBar"></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- INTRO -->
+  <div class="intro-box">
+    <p>Bienvenido/a a tu proceso de integración. Este cuestionario es la base de tu <strong>Programa Personalizado CEC®</strong>. Tómate el tiempo que necesites. No hay respuestas correctas ni incorrectas. Solo tu verdad.</p>
+    <p>Toda la información que compartas es <strong>estrictamente confidencial</strong> y se usará únicamente para diseñar tu programa terapéutico personalizado.</p>
+  </div>
+
+  <form id="cecForm" novalidate>
+
+  <!-- ════════════════════════════════════════════
+       SECCIÓN 1 – CONTEXTO GENERAL
+  ════════════════════════════════════════════ -->
+  <div class="section open" data-section="1">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div class="section-icon">🌿</div>
+      <div class="section-title-wrap">
+        <div class="section-number">Sección 01</div>
+        <div class="section-title">Contexto General</div>
+      </div>
+      <div class="section-toggle">▾</div>
+    </div>
+    <div class="section-body">
+
+      <div class="field">
+        <label>Nombre completo <span class="req">*</span></label>
+        <input type="text" name="nombre" placeholder="Tu nombre y apellidos" required>
+        <div class="error-msg">Este campo es obligatorio.</div>
+      </div>
+
+      <div class="field">
+        <label>Fecha de nacimiento <span class="req">*</span></label>
+        <input type="date" name="fecha_nacimiento" required>
+        <div class="error-msg">Por favor, indica tu fecha de nacimiento.</div>
+      </div>
+
+      <div class="field">
+        <label>Correo electrónico</label>
+        <input type="email" name="email" placeholder="tu@email.com">
+      </div>
+
+      <div class="field">
+        <label>Teléfono de contacto</label>
+        <input type="tel" name="telefono" placeholder="+34 000 000 000">
+      </div>
+
+      <div class="field">
+        <label>Género <span class="req">*</span>
+          <span class="hint">Esto nos permite personalizar ciertas preguntas.</span>
+        </label>
+        <div class="options-grid cols-2">
+          <label class="option-item">
+            <input type="radio" name="genero" value="hombre" onchange="handleGender(this)"> Hombre
+          </label>
+          <label class="option-item">
+            <input type="radio" name="genero" value="mujer" onchange="handleGender(this)"> Mujer
+          </label>
+          <label class="option-item">
+            <input type="radio" name="genero" value="no_binario" onchange="handleGender(this)"> No binario / Otro
+          </label>
+          <label class="option-item">
+            <input type="radio" name="genero" value="prefiero_no_decir" onchange="handleGender(this)"> Prefiero no decirlo
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Estado civil</label>
+        <select name="estado_civil">
+          <option value="">— Seleccionar —</option>
+          <option>Soltero/a</option>
+          <option>En pareja / Casado/a</option>
+          <option>Separado/a / Divorciado/a</option>
+          <option>Viudo/a</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Ocupación / Profesión</label>
+        <input type="text" name="profesion" placeholder="¿A qué te dedicas?">
+      </div>
+
+      <div class="field">
+        <label>Nivel de actividad física habitual</label>
+        <div class="options-grid cols-2">
+          <label class="option-item">
+            <input type="radio" name="actividad_fisica"> Sedentario/a
+          </label>
+          <label class="option-item">
+            <input type="radio" name="actividad_fisica"> Leve (< 2h/semana)
+          </label>
+          <label class="option-item">
+            <input type="radio" name="actividad_fisica"> Moderado (2-4h/semana)
+          </label>
+          <label class="option-item">
+            <input type="radio" name="actividad_fisica"> Activo/a (> 4h/semana)
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>¿Tienes personas a tu cargo (hijos/as, personas mayores, etc.)?</label>
+        <div class="options-grid cols-2">
+          <label class="option-item"><input type="radio" name="personas_cargo"> Sí</label>
+          <label class="option-item"><input type="radio" name="personas_cargo"> No</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>¿Cómo describirías tu nivel de estrés cotidiano?</label>
+        <div class="scale-wrap" id="estres_scale">
+          <button type="button" class="scale-btn" onclick="selectScale('estres', 1)">1</button>
+          <button type="button" class="scale-btn" onclick="selectScale('estres', 2)">2</button>
+          <button type="button" class="scale-btn" onclick="selectScale('estres', 3)">3</button>
+          <button type="button" class="scale-btn" onclick="selectScale('estres', 4)">4</button>
+          <button type="button" class="scale-btn" onclick="selectScale('estres', 5)">5</button>
+          <button type="button" class="scale-btn" onclick="selectScale('estres', 6)">6</button>
+          <button type="button" class="scale-btn" onclick="selectScale('estres', 7)">7</button>
+          <button type="button" class="scale-btn" onclick="selectScale('estres', 8)">8</button>
+          <button type="button" class="scale-btn" onclick="selectScale('estres', 9)">9</button>
+          <button type="button" class="scale-btn" onclick="selectScale('estres', 10)">10</button>
+        </div>
+        <div class="scale-labels"><span>Sin estrés</span><span>Estrés extremo</span></div>
+        <input type="hidden" name="nivel_estres" id="estres_val">
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       SECCIÓN 2 – MOTIVO PRINCIPAL
+  ════════════════════════════════════════════ -->
+  <div class="section" data-section="2">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div class="section-icon">🎯</div>
+      <div class="section-title-wrap">
+        <div class="section-number">Sección 02</div>
+        <div class="section-title">Motivo Principal y Objetivos</div>
+      </div>
+      <div class="section-toggle">▾</div>
+    </div>
+    <div class="section-body">
+
+      <div class="field">
+        <label>¿Qué te ha traído aquí? ¿Cuál es el motivo principal por el que buscas acompañamiento? <span class="req">*</span>
+          <span class="hint">Exprésate con libertad. No hay respuesta incorrecta.</span>
+        </label>
+        <textarea name="motivo_principal" rows="5" placeholder="Cuéntame con tus propias palabras..." required></textarea>
+        <div class="error-msg">Por favor, comparte tu motivo principal.</div>
+      </div>
+
+      <div class="field">
+        <label>¿Desde cuándo llevas con esta situación?</label>
+        <select name="duracion_problema">
+          <option value="">— Seleccionar —</option>
+          <option>Menos de 1 mes</option>
+          <option>1-3 meses</option>
+          <option>3-6 meses</option>
+          <option>6 meses – 1 año</option>
+          <option>1-3 años</option>
+          <option>Más de 3 años</option>
+          <option>Toda mi vida / No lo sé</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>¿Qué áreas de tu vida sientes que están más afectadas? <span class="hint">Puedes seleccionar varias.</span></label>
+        <div class="options-grid cols-2">
+          <label class="option-item"><input type="checkbox" name="areas_afectadas"> Salud física</label>
+          <label class="option-item"><input type="checkbox" name="areas_afectadas"> Salud emocional</label>
+          <label class="option-item"><input type="checkbox" name="areas_afectadas"> Trabajo / Carrera</label>
+          <label class="option-item"><input type="checkbox" name="areas_afectadas"> Relaciones personales</label>
+          <label class="option-item"><input type="checkbox" name="areas_afectadas"> Relación de pareja</label>
+          <label class="option-item"><input type="checkbox" name="areas_afectadas"> Familia</label>
+          <label class="option-item"><input type="checkbox" name="areas_afectadas"> Autoestima / Identidad</label>
+          <label class="option-item"><input type="checkbox" name="areas_afectadas"> Propósito / Sentido vital</label>
+          <label class="option-item"><input type="checkbox" name="areas_afectadas"> Alimentación</label>
+          <label class="option-item"><input type="checkbox" name="areas_afectadas"> Descanso / Sueño</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>¿Qué resultado concreto esperas al finalizar tu proceso CEC®?</label>
+        <textarea name="resultado_esperado" rows="3" placeholder="¿Cómo te gustaría sentirte o qué te gustaría haber logrado?"></textarea>
+      </div>
+
+      <div class="field">
+        <label>¿Has realizado algún proceso terapéutico anteriormente?</label>
+        <div class="options-grid cols-2">
+          <label class="option-item"><input type="radio" name="terapia_previa"> Sí</label>
+          <label class="option-item"><input type="radio" name="terapia_previa"> No</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Si has respondido sí, ¿de qué tipo y qué resultados obtuviste?</label>
+        <textarea name="terapia_previa_detalle" rows="3" placeholder="Tipo de terapia, duración, impresión..."></textarea>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       SECCIÓN 3 – DIMENSIÓN CORPORAL
+  ════════════════════════════════════════════ -->
+  <div class="section" data-section="3">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div class="section-icon">🫁</div>
+      <div class="section-title-wrap">
+        <div class="section-number">Sección 03</div>
+        <div class="section-title">Dimensión Corporal</div>
+      </div>
+      <div class="section-toggle">▾</div>
+    </div>
+    <div class="section-body">
+
+      <div class="info-box">El cuerpo guarda la memoria de todo lo vivido. Estas preguntas nos ayudan a entender qué expresa y qué necesita el tuyo.</div>
+
+      <div class="field">
+        <label>¿Padeces alguna condición médica diagnosticada?
+          <span class="hint">Incluye enfermedades crónicas, lesiones, diagnósticos recientes.</span>
+        </label>
+        <textarea name="condiciones_medicas" rows="3" placeholder="Diagnósticos actuales, en tratamiento o en seguimiento..."></textarea>
+      </div>
+
+      <div class="field">
+        <label>¿Tomas medicación actualmente?</label>
+        <div class="options-grid cols-2">
+          <label class="option-item"><input type="radio" name="medicacion"> Sí</label>
+          <label class="option-item"><input type="radio" name="medicacion"> No</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Si es así, ¿qué medicación y para qué?</label>
+        <textarea name="medicacion_detalle" rows="2" placeholder="Nombre del fármaco y motivo..."></textarea>
+      </div>
+
+      <div class="field">
+        <label>¿Has tenido lesiones, cirugías u hospitalizaciones relevantes?</label>
+        <textarea name="lesiones_cirugias" rows="3" placeholder="Describe brevemente fecha aproximada y zona afectada..."></textarea>
+      </div>
+
+      <div class="field">
+        <label>¿Dónde percibes con más frecuencia tensión o malestar en tu cuerpo?
+          <span class="hint">Puedes seleccionar varias zonas.</span>
+        </label>
+        <div class="options-grid cols-2">
+          <label class="option-item"><input type="checkbox" name="tension_corporal"> Cabeza / Cráneo</label>
+          <label class="option-item"><input type="checkbox" name="tension_corporal"> Cuello / Nuca</label>
+          <label class="option-item"><input type="checkbox" name="tension_corporal"> Hombros / Trapecios</label>
+          <label class="option-item"><input type="checkbox" name="tension_corporal"> Pecho / Corazón</label>
+          <label class="option-item"><input type="checkbox" name="tension_corporal"> Zona lumbar</label>
+          <label class="option-item"><input type="checkbox" name="tension_corporal"> Zona dorsal</label>
+          <label class="option-item"><input type="checkbox" name="tension_corporal"> Abdomen / Digestivo</label>
+          <label class="option-item"><input type="checkbox" name="tension_corporal"> Caderas / Pelvis</label>
+          <label class="option-item"><input type="checkbox" name="tension_corporal"> Piernas / Pies</label>
+          <label class="option-item"><input type="checkbox" name="tension_corporal"> Mandíbula / Bruxismo</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>¿Tienes alguna contraindicación para el ejercicio físico o el yoga?</label>
+        <div class="options-grid cols-2">
+          <label class="option-item"><input type="radio" name="contraindicacion_ejercicio"> Sí</label>
+          <label class="option-item"><input type="radio" name="contraindicacion_ejercicio"> No</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Si es así, ¿cuál?</label>
+        <textarea name="contraindicacion_detalle" rows="2" placeholder="Indica qué movimientos, posturas o ejercicios debes evitar..."></textarea>
+      </div>
+
+      <div class="field">
+        <label>¿Cómo describirías tu relación con tu cuerpo en este momento?</label>
+        <div class="options-grid cols-1">
+          <label class="option-item"><input type="radio" name="relacion_cuerpo"> Me siento cómodo/a y en conexión con él</label>
+          <label class="option-item"><input type="radio" name="relacion_cuerpo"> A veces lo escucho, a veces lo ignoro</label>
+          <label class="option-item"><input type="radio" name="relacion_cuerpo"> Me cuesta conectar con mis sensaciones físicas</label>
+          <label class="option-item"><input type="radio" name="relacion_cuerpo"> Siento que mi cuerpo es una fuente de malestar</label>
+          <label class="option-item"><input type="radio" name="relacion_cuerpo"> Tengo conflicto con mi imagen corporal</label>
+        </div>
+      </div>
+
+      <!-- CAMPOS ESPECÍFICOS PARA MUJER -->
+      <div class="female-fields" id="femaleFields1">
+        <div class="divider"></div>
+        <div class="subsection-title">♀ Salud Femenina</div>
+
+        <div class="info-box clay">Estas preguntas son relevantes para personalizar ciertas herramientas del programa. Son completamente opcionales.</div>
+
+        <div class="field">
+          <label>¿Estás embarazada o existe posibilidad de embarazo?</label>
+          <div class="options-grid cols-2">
+            <label class="option-item"><input type="radio" name="embarazo"> Sí, estoy embarazada</label>
+            <label class="option-item"><input type="radio" name="embarazo"> No</label>
+            <label class="option-item"><input type="radio" name="embarazo"> Posibilidad / En búsqueda activa</label>
+            <label class="option-item"><input type="radio" name="embarazo"> Prefiero no decirlo</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Si estás embarazada, ¿en qué trimestre?</label>
+          <select name="trimestre_embarazo">
+            <option value="">— Seleccionar —</option>
+            <option>1er trimestre (sem. 1-12)</option>
+            <option>2º trimestre (sem. 13-26)</option>
+            <option>3er trimestre (sem. 27-40)</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>¿Has tenido embarazos anteriores o pérdidas gestacionales?
+            <span class="hint">Solo si deseas compartirlo. Esta información puede ser relevante emocionalmente.</span>
+          </label>
+          <textarea name="historia_embarazo" rows="2" placeholder="Breve descripción si lo consideras relevante..."></textarea>
+        </div>
+
+        <div class="field">
+          <label>¿Te encuentras en fase de climaterio o menopausia?</label>
+          <div class="options-grid cols-1">
+            <label class="option-item"><input type="radio" name="climaterio"> Premenopausia / Perimenopausia (ciclos irregulares, síntomas iniciales)</label>
+            <label class="option-item"><input type="radio" name="climaterio"> Menopausia establecida (más de 12 meses sin menstruación)</label>
+            <label class="option-item"><input type="radio" name="climaterio"> Postmenopausia</label>
+            <label class="option-item"><input type="radio" name="climaterio"> No / No aplica en este momento</label>
+            <label class="option-item"><input type="radio" name="climaterio"> No lo sé / En estudio</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>¿Cuáles de los siguientes síntomas climateriales experimentas actualmente?
+            <span class="hint">Selecciona todos los que correspondan.</span>
+          </label>
+          <div class="options-grid cols-2">
+            <label class="option-item"><input type="checkbox" name="sintomas_climaterio"> Sofocos / Sudoración nocturna</label>
+            <label class="option-item"><input type="checkbox" name="sintomas_climaterio"> Insomnio o alteraciones del sueño</label>
+            <label class="option-item"><input type="checkbox" name="sintomas_climaterio"> Cambios de humor / Irritabilidad</label>
+            <label class="option-item"><input type="checkbox" name="sintomas_climaterio"> Ansiedad o tristeza</label>
+            <label class="option-item"><input type="checkbox" name="sintomas_climaterio"> Niebla mental / Dificultad de concentración</label>
+            <label class="option-item"><input type="checkbox" name="sintomas_climaterio"> Sequedad vaginal / Cambios íntimos</label>
+            <label class="option-item"><input type="checkbox" name="sintomas_climaterio"> Pérdida de libido</label>
+            <label class="option-item"><input type="checkbox" name="sintomas_climaterio"> Dolores articulares / Musculares</label>
+            <label class="option-item"><input type="checkbox" name="sintomas_climaterio"> Variaciones de peso</label>
+            <label class="option-item"><input type="checkbox" name="sintomas_climaterio"> Palpitaciones</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>¿Sigues terapia hormonal u otro tratamiento para el climaterio?</label>
+          <textarea name="tratamiento_climaterio" rows="2" placeholder="Indica si tomas THS, fitoestrógenos, tratamiento médico u otro..."></textarea>
+        </div>
+
+        <div class="field">
+          <label>¿Tienes alteraciones en el ciclo menstrual (si aún menstrúas)?</label>
+          <div class="options-grid cols-1">
+            <label class="option-item"><input type="radio" name="ciclo_menstrual"> Ciclo regular y sin molestias significativas</label>
+            <label class="option-item"><input type="radio" name="ciclo_menstrual"> Ciclo irregular</label>
+            <label class="option-item"><input type="radio" name="ciclo_menstrual"> Dismenorrea (dolores menstruales intensos)</label>
+            <label class="option-item"><input type="radio" name="ciclo_menstrual"> SOP / Endometriosis u otro diagnóstico</label>
+            <label class="option-item"><input type="radio" name="ciclo_menstrual"> No aplica</label>
+          </div>
+        </div>
+      </div>
+      <!-- FIN CAMPOS FEMENINOS -->
+
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       SECCIÓN 4 – DIMENSIÓN EMOCIONAL
+  ════════════════════════════════════════════ -->
+  <div class="section" data-section="4">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div class="section-icon">💛</div>
+      <div class="section-title-wrap">
+        <div class="section-number">Sección 04</div>
+        <div class="section-title">Dimensión Emocional</div>
+      </div>
+      <div class="section-toggle">▾</div>
+    </div>
+    <div class="section-body">
+
+      <div class="info-box">La emoción conecta la experiencia con el síntoma. No hay emociones buenas ni malas. Solo mensajes que el organismo envía.</div>
+
+      <div class="field">
+        <label>¿Cómo describirías tu estado emocional habitual en los últimos 3 meses?</label>
+        <div class="options-grid cols-2">
+          <label class="option-item"><input type="checkbox" name="estado_emocional"> Ansiedad / Nerviosismo</label>
+          <label class="option-item"><input type="checkbox" name="estado_emocional"> Tristeza / Melancolía</label>
+          <label class="option-item"><input type="checkbox" name="estado_emocional"> Irritabilidad / Rabia contenida</label>
+          <label class="option-item"><input type="checkbox" name="estado_emocional"> Sensación de vacío</label>
+          <label class="option-item"><input type="checkbox" name="estado_emocional"> Miedo / Inseguridad</label>
+          <label class="option-item"><input type="checkbox" name="estado_emocional"> Bloqueo emocional</label>
+          <label class="option-item"><input type="checkbox" name="estado_emocional"> Culpa o vergüenza</label>
+          <label class="option-item"><input type="checkbox" name="estado_emocional"> Confusión / Desconexión</label>
+          <label class="option-item"><input type="checkbox" name="estado_emocional"> Estabilidad relativa</label>
+          <label class="option-item"><input type="checkbox" name="estado_emocional"> Bienestar general</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>¿Has recibido o recibes actualmente atención psicológica o psiquiátrica?</label>
+        <div class="options-grid cols-2">
+          <label class="option-item"><input type="radio" name="atencion_psicologica"> Sí, actualmente</label>
+          <label class="option-item"><input type="radio" name="atencion_psicologica"> Sí, en el pasado</label>
+          <label class="option-item"><input type="radio" name="atencion_psicologica"> No</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>¿Existe algún diagnóstico emocional o psiquiátrico relevante que debamos conocer?
+          <span class="hint">Ansiedad generalizada, depresión, trastorno bipolar, TDAH, TEPT, etc.</span>
+        </label>
+        <textarea name="diagnostico_emocional" rows="2" placeholder="Solo si lo deseas compartir..."></textarea>
+      </div>
+
+      <div class="field">
+        <label>¿Cómo sueles gestionar las emociones difíciles?</label>
+        <div class="options-grid cols-1">
+          <label class="option-item"><input type="radio" name="gestion_emocional"> Las expreso con facilidad y busco apoyo</label>
+          <label class="option-item"><input type="radio" name="gestion_emocional"> Tiendo a reprimirlas o ignorarlas</label>
+          <label class="option-item"><input type="radio" name="gestion_emocional"> Me desbordó con facilidad</label>
+          <label class="option-item"><input type="radio" name="gestion_emocional"> Las canalizo a través del cuerpo (deporte, tensión, síntomas)</label>
+          <label class="option-item"><input type="radio" name="gestion_emocional"> Utilizo estrategias de evasión (trabajo, pantallas, etc.)</label>
+          <label class="option-item"><input type="radio" name="gestion_emocional"> Aún no tengo un patrón claro</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>¿Has vivido situaciones de trauma, pérdida o duelo que consideres que aún tienen impacto en tu vida?</label>
+        <div class="options-grid cols-2">
+          <label class="option-item"><input type="radio" name="trauma"> Sí</label>
+          <label class="option-item"><input type="radio" name="trauma"> No</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Si lo deseas, puedes describirlo brevemente:
+          <span class="hint">Solo compartes lo que sientes que es necesario.</span>
+        </label>
+        <textarea name="trauma_detalle" rows="3" placeholder="Experiencias de pérdida, duelo, trauma, violencia, abandono... Solo lo que quieras compartir."></textarea>
+      </div>
+
+      <div class="field">
+        <label>¿Cómo valoras tu nivel de autoestima actualmente?</label>
+        <div class="scale-wrap" id="autoestima_scale">
+          <button type="button" class="scale-btn" onclick="selectScale('autoestima', 1)">1</button>
+          <button type="button" class="scale-btn" onclick="selectScale('autoestima', 2)">2</button>
+          <button type="button" class="scale-btn" onclick="selectScale('autoestima', 3)">3</button>
+          <button type="button" class="scale-btn" onclick="selectScale('autoestima', 4)">4</button>
+          <button type="button" class="scale-btn" onclick="selectScale('autoestima', 5)">5</button>
+          <button type="button" class="scale-btn" onclick="selectScale('autoestima', 6)">6</button>
+          <button type="button" class="scale-btn" onclick="selectScale('autoestima', 7)">7</button>
+          <button type="button" class="scale-btn" onclick="selectScale('autoestima', 8)">8</button>
+          <button type="button" class="scale-btn" onclick="selectScale('autoestima', 9)">9</button>
+          <button type="button" class="scale-btn" onclick="selectScale('autoestima', 10)">10</button>
+        </div>
+        <div class="scale-labels"><span>Muy baja</span><span>Muy alta</span></div>
+        <input type="hidden" name="nivel_autoestima" id="autoestima_val">
+      </div>
+
+      <div class="field">
+        <label>¿Qué emociones te cuesta más sentir o expresar?</label>
+        <textarea name="emociones_dificiles" rows="2" placeholder="La rabia, el miedo, la tristeza, la alegría, el amor..."></textarea>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       SECCIÓN 5 – SISTEMA NERVIOSO
+  ════════════════════════════════════════════ -->
+  <div class="section" data-section="5">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div class="section-icon">⚡</div>
+      <div class="section-title-wrap">
+        <div class="section-number">Sección 05</div>
+        <div class="section-title">Sistema Nervioso y Regulación</div>
+      </div>
+      <div class="section-toggle">▾</div>
+    </div>
+    <div class="section-body">
+
+      <div class="info-box">El sistema nervioso es el director de orquesta de tu bienestar. Entender su patrón predominante es clave en el Método CEC®.</div>
+
+      <div class="field">
+        <label>¿Cómo describirías tu estado de activación habitual?</label>
+        <div class="options-grid cols-1">
+          <label class="option-item"><input type="radio" name="activacion_sn"> Hiperactivado/a: acelerado/a, difícil parar, mente muy activa</label>
+          <label class="option-item"><input type="radio" name="activacion_sn"> Hipoactivado/a: apagado/a, falta de energía, dificultad para activarme</label>
+          <label class="option-item"><input type="radio" name="activacion_sn"> Oscilo entre ambos extremos (ciclos)</label>
+          <label class="option-item"><input type="radio" name="activacion_sn"> Me siento relativamente equilibrado/a</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>¿Experimentas alguno de estos síntomas habitualmente?
+          <span class="hint">Selecciona todos los que correspondan.</span>
+        </label>
+        <div class="options-grid cols-2">
+          <label class="option-item"><input type="checkbox" name="sintomas_sn"> Dificultad para concentrarte</label>
+          <label class="option-item"><input type="checkbox" name="sintomas_sn"> Sensación de alerta constante</label>
+          <label class="option-item"><input type="checkbox" name="sintomas_sn"> Reacciones exageradas ante estímulos</label>
+          <label class="option-item"><input type="checkbox" name="sintomas_sn"> Entumecimiento emocional / Disociación</label>
+          <label class="option-item"><input type="checkbox" name="sintomas_sn"> Fatiga crónica</label>
+          <label class="option-item"><input type="checkbox" name="sintomas_sn"> Temblores o tensión muscular involuntaria</label>
+          <label class="option-item"><input type="checkbox" name="sintomas_sn"> Palpitaciones o sensación en el pecho</label>
+          <label class="option-item"><input type="checkbox" name="sintomas_sn"> Hiperventilación</label>
+          <label class="option-item"><input type="checkbox" name="sintomas_sn"> Dificultad para relajarte</label>
+          <label class="option-item"><input type="checkbox" name="sintomas_sn"> Dificultad para activarte / motivarte</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>¿Cómo es tu patrón de sueño habitual?</label>
+        <div class="options-grid cols-1">
+          <label class="option-item"><input type="radio" name="patron_sueno"> Duermo bien, me despierto descansado/a</label>
+          <label class="option-item"><input type="radio" name="patron_sueno"> Me cuesta conciliar el sueño</label>
+          <label class="option-item"><input type="radio" name="patron_sueno"> Me despierto varias veces durante la noche</label>
+          <label class="option-item"><input type="radio" name="patron_sueno"> Duermo pocas horas por decisión propia</label>
+          <label class="option-item"><input type="radio" name="patron_sueno"> Me levanto cansado/a aunque duerma suficiente</label>
+          <label class="option-item"><input type="radio" name="patron_sueno"> Insomnio diagnosticado o muy frecuente</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>¿Cuántas horas duermes habitualmente por noche?</label>
+        <select name="horas_sueno">
+          <option value="">— Seleccionar —</option>
+          <option>Menos de 5 horas</option>
+          <option>5-6 horas</option>
+          <option>6-7 horas</option>
+          <option>7-8 horas</option>
+          <option>Más de 8 horas</option>
+          <option>Muy variable</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>¿Tienes alguna práctica actual de regulación (meditación, respiración, yoga, naturaleza, etc.)?</label>
+        <textarea name="practicas_regulacion" rows="3" placeholder="Describe qué haces, con qué frecuencia y qué resultado te da..."></textarea>
+      </div>
+
+      <div class="field">
+        <label>¿Qué tan fácil te resulta pasar de un estado de activación a uno de calma?</label>
+        <div class="scale-wrap" id="transicion_scale">
+          <button type="button" class="scale-btn" onclick="selectScale('transicion', 1)">1</button>
+          <button type="button" class="scale-btn" onclick="selectScale('transicion', 2)">2</button>
+          <button type="button" class="scale-btn" onclick="selectScale('transicion', 3)">3</button>
+          <button type="button" class="scale-btn" onclick="selectScale('transicion', 4)">4</button>
+          <button type="button" class="scale-btn" onclick="selectScale('transicion', 5)">5</button>
+          <button type="button" class="scale-btn" onclick="selectScale('transicion', 6)">6</button>
+          <button type="button" class="scale-btn" onclick="selectScale('transicion', 7)">7</button>
+          <button type="button" class="scale-btn" onclick="selectScale('transicion', 8)">8</button>
+          <button type="button" class="scale-btn" onclick="selectScale('transicion', 9)">9</button>
+          <button type="button" class="scale-btn" onclick="selectScale('transicion', 10)">10</button>
+        </div>
+        <div class="scale-labels"><span>Muy difícil</span><span>Muy fácil</span></div>
+        <input type="hidden" name="transicion_calma" id="transicion_val">
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       SECCIÓN 6 – HÁBITOS Y ESTILO DE VIDA
+  ════════════════════════════════════════════ -->
+  <div class="section" data-section="6">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div class="section-icon">🌱</div>
+      <div class="section-title-wrap">
+        <div class="section-number">Sección 06</div>
+        <div class="section-title">Hábitos y Estilo de Vida</div>
+      </div>
+      <div class="section-toggle">▾</div>
+    </div>
+    <div class="section-body">
+
+      <div class="subsection-title">Tabaco, Alcohol y otras Sustancias</div>
+
+      <div class="field">
+        <label>Tabaco y nicotina
+          <span class="hint">Puedes seleccionar varias opciones.</span>
+        </label>
+        <div class="options-grid cols-1">
+          <label class="option-item"><input type="checkbox" name="tabaco"> No fumo ni vapeo</label>
+          <label class="option-item"><input type="checkbox" name="tabaco"> Fumador/a ocasional (social)</label>
+          <label class="option-item"><input type="checkbox" name="tabaco"> Fumador/a habitual (menos de 10 cigarrillos/día)</label>
+          <label class="option-item"><input type="checkbox" name="tabaco"> Fumador/a habitual (más de 10 cigarrillos/día)</label>
+          <label class="option-item"><input type="checkbox" name="tabaco"> Ex fumador/a</label>
+          <label class="option-item"><input type="checkbox" name="tabaco"> Vapeo / Cigarrillo electrónico (ocasional)</label>
+          <label class="option-item"><input type="checkbox" name="tabaco"> Vapeo / Cigarrillo electrónico (habitual)</label>
+          <label class="option-item"><input type="checkbox" name="tabaco"> Fumo y además vapeo</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Alcohol</label>
+        <div class="options-grid cols-1">
+          <label class="option-item"><input type="radio" name="alcohol"> No bebo</label>
+          <label class="option-item"><input type="radio" name="alcohol"> Consumo muy ocasional (< 1 vez/mes)</label>
+          <label class="option-item"><input type="radio" name="alcohol"> Consumo social (fines de semana)</label>
+          <label class="option-item"><input type="radio" name="alcohol"> Consumo moderado (varias veces por semana)</label>
+          <label class="option-item"><input type="radio" name="alcohol"> Consumo diario</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Estimulantes (café, té, infusiones con teína, bebidas energéticas)
+          <span class="hint">Puedes seleccionar varias opciones.</span>
+        </label>
+        <div class="options-grid cols-1">
+          <label class="option-item"><input type="checkbox" name="estimulantes"> No tomo estimulantes</label>
+          <label class="option-item"><input type="checkbox" name="estimulantes"> 1-2 tazas de café al día</label>
+          <label class="option-item"><input type="checkbox" name="estimulantes"> 3-4 tazas de café al día</label>
+          <label class="option-item"><input type="checkbox" name="estimulantes"> Más de 4 tazas de café al día</label>
+          <label class="option-item"><input type="checkbox" name="estimulantes"> Té negro o verde (1-2 tazas al día)</label>
+          <label class="option-item"><input type="checkbox" name="estimulantes"> Té negro o verde (más de 2 tazas al día)</label>
+          <label class="option-item"><input type="checkbox" name="estimulantes"> Bebidas energéticas ocasionalmente</label>
+          <label class="option-item"><input type="checkbox" name="estimulantes"> Bebidas energéticas regularmente (varios días/semana)</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Otras sustancias (cannabis, medicación sin prescripción, etc.)
+          <span class="hint">Sin juicio. Esta información es terapéuticamente relevante.</span>
+        </label>
+        <textarea name="otras_sustancias" rows="2" placeholder="Indica si consumes otras sustancias con alguna frecuencia..."></textarea>
+      </div>
+
+      <div class="divider"></div>
+      <div class="subsection-title">Alimentación e Hidratación</div>
+
+      <div class="field">
+        <label>¿Cómo describirías tu patrón alimentario habitual?</label>
+        <div class="options-grid cols-1">
+          <label class="option-item"><input type="radio" name="patron_alimentario"> Equilibrado y consciente</label>
+          <label class="option-item"><input type="radio" name="patron_alimentario"> Bastante saludable pero con excepciones frecuentes</label>
+          <label class="option-item"><input type="radio" name="patron_alimentario"> Irregular (a veces no como o como en exceso)</label>
+          <label class="option-item"><input type="radio" name="patron_alimentario"> Predomina la comida procesada o de poco valor nutricional</label>
+          <label class="option-item"><input type="radio" name="patron_alimentario"> Tengo una relación complicada con la comida</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>¿Cuántos vasos de agua bebes aproximadamente al día?</label>
+        <div class="options-grid cols-2">
+          <label class="option-item"><input type="radio" name="hidratacion"> Menos de 4</label>
+          <label class="option-item"><input type="radio" name="hidratacion"> 4-6 vasos</label>
+          <label class="option-item"><input type="radio" name="hidratacion"> 6-8 vasos</label>
+          <label class="option-item"><input type="radio" name="hidratacion"> Más de 8</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>¿Sigues algún tipo de alimentación específica?
+          <span class="hint">Puedes seleccionar varias.</span>
+        </label>
+        <div class="options-grid cols-2">
+          <label class="option-item"><input type="checkbox" name="tipo_alimentacion"> Omnívora</label>
+          <label class="option-item"><input type="checkbox" name="tipo_alimentacion"> Vegetariana</label>
+          <label class="option-item"><input type="checkbox" name="tipo_alimentacion"> Vegana</label>
+          <label class="option-item"><input type="checkbox" name="tipo_alimentacion"> Sin gluten</label>
+          <label class="option-item"><input type="checkbox" name="tipo_alimentacion"> Sin lactosa</label>
+          <label class="option-item"><input type="checkbox" name="tipo_alimentacion"> Baja en carbohidratos / Cetogénica</label>
+          <label class="option-item"><input type="checkbox" name="tipo_alimentacion"> Restricción por alergia/intolerancia</label>
+          <label class="option-item"><input type="checkbox" name="tipo_alimentacion"> Otra / Sin criterio definido</label>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="subsection-title">Tecnología, Descanso y Entorno</div>
+
+      <div class="field">
+        <label>¿Cuánto tiempo pasas frente a pantallas (móvil, ordenador, TV) fuera del trabajo?</label>
+        <div class="options-grid cols-2">
+          <label class="option-item"><input type="radio" name="pantallas"> Menos de 1 hora</label>
+          <label class="option-item"><input type="radio" name="pantallas"> 1-2 horas</label>
+          <label class="option-item"><input type="radio" name="pantallas"> 2-4 horas</label>
+          <label class="option-item"><input type="radio" name="pantallas"> Más de 4 horas</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>¿Tienes momentos de desconexión y calma en tu día a día?</label>
+        <div class="options-grid cols-1">
+          <label class="option-item"><input type="radio" name="momentos_calma"> Sí, regularmente</label>
+          <label class="option-item"><input type="radio" name="momentos_calma"> A veces, cuando puedo</label>
+          <label class="option-item"><input type="radio" name="momentos_calma"> Rara vez</label>
+          <label class="option-item"><input type="radio" name="momentos_calma"> Nunca o casi nunca</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>¿Tienes contacto frecuente con la naturaleza (parques, campo, mar, montaña)?</label>
+        <div class="options-grid cols-2">
+          <label class="option-item"><input type="radio" name="naturaleza"> A diario</label>
+          <label class="option-item"><input type="radio" name="naturaleza"> Varias veces a la semana</label>
+          <label class="option-item"><input type="radio" name="naturaleza"> Alguna vez al mes</label>
+          <label class="option-item"><input type="radio" name="naturaleza"> Muy poco o nada</label>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       SECCIÓN 7 – ESCALA ER-CEC® INICIAL
+  ════════════════════════════════════════════ -->
+  <div class="section" data-section="7">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div class="section-icon">📊</div>
+      <div class="section-title-wrap">
+        <div class="section-number">Sección 07</div>
+        <div class="section-title">Escala de Regulación Integrativa ER-CEC®</div>
+      </div>
+      <div class="section-toggle">▾</div>
+    </div>
+    <div class="section-body">
+
+      <div class="info-box gold">Esta escala nos permite medir tu punto de partida en las 5 dimensiones del Método CEC®. Mueve los controles deslizantes con honestidad. No mide perfección, mide dirección.</div>
+
+      <div class="er-cec-grid">
+
+        <div class="er-row">
+          <div class="er-label">
+            <span>1. Regulación Corporal</span>
+            <span class="er-score" id="er1_val">5</span>
+          </div>
+          <input type="range" class="er-slider" min="0" max="10" value="5" name="er_corporal" id="er1"
+            oninput="document.getElementById('er1_val').textContent=this.value; updateERTotal()">
+          <div class="scale-labels"><span>Sin regulación</span><span>Plena regulación</span></div>
+        </div>
+
+        <div class="er-row">
+          <div class="er-label">
+            <span>2. Regulación Emocional</span>
+            <span class="er-score" id="er2_val">5</span>
+          </div>
+          <input type="range" class="er-slider" min="0" max="10" value="5" name="er_emocional" id="er2"
+            oninput="document.getElementById('er2_val').textContent=this.value; updateERTotal()">
+          <div class="scale-labels"><span>Sin regulación</span><span>Plena regulación</span></div>
+        </div>
+
+        <div class="er-row">
+          <div class="er-label">
+            <span>3. Regulación Sistema Nervioso</span>
+            <span class="er-score" id="er3_val">5</span>
+          </div>
+          <input type="range" class="er-slider" min="0" max="10" value="5" name="er_nervioso" id="er3"
+            oninput="document.getElementById('er3_val').textContent=this.value; updateERTotal()">
+          <div class="scale-labels"><span>Sin regulación</span><span>Plena regulación</span></div>
+        </div>
+
+        <div class="er-row">
+          <div class="er-label">
+            <span>4. Regulación Conductual y Hábitos</span>
+            <span class="er-score" id="er4_val">5</span>
+          </div>
+          <input type="range" class="er-slider" min="0" max="10" value="5" name="er_conductual" id="er4"
+            oninput="document.getElementById('er4_val').textContent=this.value; updateERTotal()">
+          <div class="scale-labels"><span>Sin regulación</span><span>Plena regulación</span></div>
+        </div>
+
+        <div class="er-row">
+          <div class="er-label">
+            <span>5. Regulación de Consciencia y Coherencia Vital</span>
+            <span class="er-score" id="er5_val">5</span>
+          </div>
+          <input type="range" class="er-slider" min="0" max="10" value="5" name="er_consciencia" id="er5"
+            oninput="document.getElementById('er5_val').textContent=this.value; updateERTotal()">
+          <div class="scale-labels"><span>Sin regulación</span><span>Plena regulación</span></div>
+        </div>
+
+        <div class="er-total-box">
+          <div>
+            <div class="label">Puntuación Total ER-CEC®</div>
+            <div class="max">sobre 50 puntos</div>
+          </div>
+          <div class="score" id="er_total">25</div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       SECCIÓN 8 – COMPROMISO Y DISPONIBILIDAD
+  ════════════════════════════════════════════ -->
+  <div class="section" data-section="8">
+    <div class="section-header" onclick="toggleSection(this)">
+      <div class="section-icon">🤝</div>
+      <div class="section-title-wrap">
+        <div class="section-number">Sección 08</div>
+        <div class="section-title">Compromiso y Disponibilidad</div>
+      </div>
+      <div class="section-toggle">▾</div>
+    </div>
+    <div class="section-body">
+
+      <div class="field">
+        <label>¿Cuánto tiempo puedes dedicar a las prácticas CEC® de forma realista?</label>
+        <div class="options-grid cols-1">
+          <label class="option-item"><input type="radio" name="tiempo_disponible"> 15-20 minutos diarios</label>
+          <label class="option-item"><input type="radio" name="tiempo_disponible"> 30-45 minutos diarios</label>
+          <label class="option-item"><input type="radio" name="tiempo_disponible"> 1 hora diaria</label>
+          <label class="option-item"><input type="radio" name="tiempo_disponible"> Más de 1 hora diaria</label>
+          <label class="option-item"><input type="radio" name="tiempo_disponible"> Solo algunos días a la semana</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>¿Qué horario te resulta más favorable para tus prácticas?</label>
+        <div class="options-grid cols-2">
+          <label class="option-item"><input type="checkbox" name="horario"> Mañana (antes de comenzar el día)</label>
+          <label class="option-item"><input type="checkbox" name="horario"> Mediodía / Pausa</label>
+          <label class="option-item"><input type="checkbox" name="horario"> Tarde</label>
+          <label class="option-item"><input type="checkbox" name="horario"> Noche (antes de dormir)</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Del 1 al 10, ¿cómo calificarías tu motivación y disposición a iniciar este proceso?</label>
+        <div class="scale-wrap" id="motivacion_scale">
+          <button type="button" class="scale-btn" onclick="selectScale('motivacion', 1)">1</button>
+          <button type="button" class="scale-btn" onclick="selectScale('motivacion', 2)">2</button>
+          <button type="button" class="scale-btn" onclick="selectScale('motivacion', 3)">3</button>
+          <button type="button" class="scale-btn" onclick="selectScale('motivacion', 4)">4</button>
+          <button type="button" class="scale-btn" onclick="selectScale('motivacion', 5)">5</button>
+          <button type="button" class="scale-btn" onclick="selectScale('motivacion', 6)">6</button>
+          <button type="button" class="scale-btn" onclick="selectScale('motivacion', 7)">7</button>
+          <button type="button" class="scale-btn" onclick="selectScale('motivacion', 8)">8</button>
+          <button type="button" class="scale-btn" onclick="selectScale('motivacion', 9)">9</button>
+          <button type="button" class="scale-btn" onclick="selectScale('motivacion', 10)">10</button>
+        </div>
+        <div class="scale-labels"><span>Sin motivación</span><span>Máxima motivación</span></div>
+        <input type="hidden" name="nivel_motivacion" id="motivacion_val">
+      </div>
+
+      <div class="field">
+        <label>¿Existe algún obstáculo que preveas para el seguimiento del programa?</label>
+        <textarea name="obstaculos" rows="3" placeholder="Trabajo, familia, económicos, motivacionales, físicos..."></textarea>
+      </div>
+
+      <div class="field">
+        <label>¿Hay algo que quieras añadir que no haya sido preguntado?</label>
+        <textarea name="notas_adicionales" rows="4" placeholder="Cualquier información que consideres relevante para tu proceso..."></textarea>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       NUTRICIÓN CONSCIENTE CEC® (ACTIVACIÓN VOLUNTARIA)
+  ════════════════════════════════════════════ -->
+  <div class="nutrition-toggle-section">
+    <div class="nutrition-banner">
+      <h3>✦ Nutrición Consciente CEC® — Bloque Especial</h3>
+      <p>Este bloque no es una dieta. Es un trabajo profundo sobre la relación entre el <strong>sistema nervioso, la digestión y la emoción</strong>. No es obligatorio. Solo actívalo si deseas recibir también un <strong>plan nutricional personalizado</strong> como parte de tu proceso CEC®.</p>
+    </div>
+    <div class="nutrition-checkbox-area">
+      <label class="nutrition-activate-label">
+        <input type="checkbox" id="activar_nutricion" onchange="toggleNutrition(this)">
+        <div class="nutrition-activate-text">
+          <strong>Sí, deseo activar el Bloque de Nutrición Consciente CEC®</strong>
+          <span>Entiendo que es un complemento al programa, no un sustituto de prescripción médica</span>
+        </div>
+      </label>
+    </div>
+    <div class="nutrition-fields" id="nutritionFields">
+      <div class="divider" style="margin-top:0"></div>
+      <div style="padding: 0 0 8px">
+
+        <div class="field">
+          <label>Peso actual (kg)
+            <span class="hint">Necesario para calcular el Índice de Masa Corporal (IMC) y personalizar el plan.</span>
+          </label>
+          <input type="number" name="peso_kg" placeholder="Ej: 68" min="30" max="300" step="0.1">
+        </div>
+
+        <div class="field">
+          <label>Talla / Estatura (cm)</label>
+          <input type="number" name="talla_cm" placeholder="Ej: 168" min="100" max="250" step="1">
+        </div>
+
+        <div class="field">
+          <label>Índice de Masa Corporal (IMC)
+            <span class="hint">Se calcula automáticamente a partir de los datos anteriores.</span>
+          </label>
+          <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
+            <div id="imcResultBox" style="
+              background: var(--cream);
+              border: 1.5px solid var(--border);
+              border-radius: var(--radius-sm);
+              padding: 14px 24px;
+              font-family: 'Cormorant Garamond', serif;
+              font-size: 28px;
+              font-weight: 600;
+              color: var(--sage-dark);
+              min-width: 90px;
+              text-align: center;
+              line-height: 1;
+            ">—</div>
+            <div id="imcCategoryBox" style="font-size:14px; color:var(--mid); font-style:italic;"></div>
+          </div>
+          <input type="hidden" name="imc" id="imcHiddenVal">
+        </div>
+
+
+          <textarea name="patologia_digestiva" rows="2" placeholder="Síndrome de intestino irritable, SIBO, gastritis, colitis, enfermedad de Crohn, celiaquía..."></textarea>
+        </div>
+
+        <div class="field">
+          <label>¿Cómo es tu digestión habitualmente?</label>
+          <div class="options-grid cols-2">
+            <label class="option-item"><input type="checkbox" name="digestion"> Buena / Sin molestias</label>
+            <label class="option-item"><input type="checkbox" name="digestion"> Hinchazón frecuente</label>
+            <label class="option-item"><input type="checkbox" name="digestion"> Gases</label>
+            <label class="option-item"><input type="checkbox" name="digestion"> Estreñimiento</label>
+            <label class="option-item"><input type="checkbox" name="digestion"> Diarrea frecuente</label>
+            <label class="option-item"><input type="checkbox" name="digestion"> Digestiones lentas / Pesadas</label>
+            <label class="option-item"><input type="checkbox" name="digestion"> Acidez / Reflujo</label>
+            <label class="option-item"><input type="checkbox" name="digestion"> Náuseas</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>¿Cuántas comidas principales haces al día?</label>
+          <div class="options-grid cols-2">
+            <label class="option-item"><input type="radio" name="num_comidas"> 1-2</label>
+            <label class="option-item"><input type="radio" name="num_comidas"> 3</label>
+            <label class="option-item"><input type="radio" name="num_comidas"> 4-5 (con tentempiés)</label>
+            <label class="option-item"><input type="radio" name="num_comidas"> Muy irregular</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>¿Comes con atención o habitualmente lo haces de forma distraída (pantallas, trabajo, prisa)?</label>
+          <div class="options-grid cols-1">
+            <label class="option-item"><input type="radio" name="atencion_comida"> Como con consciencia y tranquilidad</label>
+            <label class="option-item"><input type="radio" name="atencion_comida"> A veces me distraigo pero suelo ser consciente</label>
+            <label class="option-item"><input type="radio" name="atencion_comida"> Habitualmente como con pantallas o en modo automático</label>
+            <label class="option-item"><input type="radio" name="atencion_comida"> Siempre como con prisa o de manera inconsciente</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>¿Tienes comportamientos emocionales en torno a la comida?
+            <span class="hint">Selecciona los que correspondan.</span>
+          </label>
+          <div class="options-grid cols-1">
+            <label class="option-item"><input type="checkbox" name="emocional_comida"> Picoteo por ansiedad, aburrimiento o estrés</label>
+            <label class="option-item"><input type="checkbox" name="emocional_comida"> Uso la comida como recompensa o consuelo</label>
+            <label class="option-item"><input type="checkbox" name="emocional_comida"> Restricción o saltarme comidas por control o culpa</label>
+            <label class="option-item"><input type="checkbox" name="emocional_comida"> Atracones o pérdida de control con la comida</label>
+            <label class="option-item"><input type="checkbox" name="emocional_comida"> No tengo relación emocional especial con la comida</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>¿Cuál es tu nivel de energía a lo largo del día?</label>
+          <div class="options-grid cols-1">
+            <label class="option-item"><input type="radio" name="energia_dia"> Estable durante todo el día</label>
+            <label class="option-item"><input type="radio" name="energia_dia"> Buena por la mañana, baja a partir del mediodía</label>
+            <label class="option-item"><input type="radio" name="energia_dia"> Baja por la mañana, mejor por la tarde</label>
+            <label class="option-item"><input type="radio" name="energia_dia"> Picos de energía y bajadas bruscas</label>
+            <label class="option-item"><input type="radio" name="energia_dia"> Baja energía de forma constante</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>¿Tomas algún suplemento nutricional actualmente?</label>
+          <textarea name="suplementos_actuales" rows="2" placeholder="Vitaminas, minerales, probióticos, proteína, omega-3..."></textarea>
+        </div>
+
+        <div class="field">
+          <label>¿Tienes alergias o intolerancias alimentarias diagnosticadas o sospechadas?</label>
+          <textarea name="alergias_intolerancias" rows="2" placeholder="Gluten, lactosa, fructosa, histamina, frutos secos, mariscos..."></textarea>
+        </div>
+
+        <div class="field">
+          <label>¿Cuál es tu objetivo principal en el ámbito nutricional?</label>
+          <div class="options-grid cols-1">
+            <label class="option-item"><input type="radio" name="objetivo_nutricional"> Mejorar mi energía y vitalidad</label>
+            <label class="option-item"><input type="radio" name="objetivo_nutricional"> Mejorar mi digestión</label>
+            <label class="option-item"><input type="radio" name="objetivo_nutricional"> Gestionar mejor mi relación emocional con la comida</label>
+            <label class="option-item"><input type="radio" name="objetivo_nutricional"> Regular el peso de forma saludable</label>
+            <label class="option-item"><input type="radio" name="objetivo_nutricional"> Reducir la inflamación</label>
+            <label class="option-item"><input type="radio" name="objetivo_nutricional"> Apoyo durante el climaterio / Menopausia</label>
+            <label class="option-item"><input type="radio" name="objetivo_nutricional"> No tengo objetivo específico, me guío por el terapeuta</label>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       CONSENTIMIENTO INFORMADO
+  ════════════════════════════════════════════ -->
+  <div class="consent-section">
+    <h2>⚖ Consentimiento Informado</h2>
+    <p style="font-size:13px; color:var(--mid); margin-bottom:16px;">Por favor, lee con atención el siguiente texto antes de firmar.</p>
+
+    <div class="consent-text" id="consentText">
+      <strong>CONSENTIMIENTO INFORMADO – MÉTODO INTEGRATIVO CEC® · Kiko Martínez</strong><br><br>
+      El/la abajo firmante declara haber sido informado/a de manera clara y comprensible sobre las características del Método Integrativo CEC® (Cuerpo · Emoción · Consciencia), creado por Kiko Martínez, y consiente voluntariamente su participación en el proceso terapéutico y/o de acompañamiento.<br><br>
+      <strong>Naturaleza del servicio:</strong> El Método Integrativo CEC® es una metodología de acompañamiento que integra herramientas de coaching terapéutico, movimiento consciente, yoga, regulación del sistema nervioso, trabajo emocional y hábitos saludables. No constituye en ningún caso un tratamiento médico, psiquiátrico ni psicológico clínico.<br><br>
+      <strong>Limitaciones y derivación:</strong> El programa CEC® es siempre complementario a cualquier tratamiento médico en curso. El/la participante se compromete a informar al terapeuta de cualquier cambio en su estado de salud y a consultar con su médico ante cualquier duda. El terapeuta se reserva el derecho de derivar a otros profesionales si lo considera necesario para el bienestar del cliente.<br><br>
+      <strong>Responsabilidad personal:</strong> El/la participante asume la responsabilidad de su propio proceso y se compromete a participar activamente y con honestidad. La efectividad del proceso depende en gran medida del compromiso y la implicación personal.<br><br>
+      <strong>Confidencialidad:</strong> Toda la información recogida en este cuestionario y durante las sesiones es estrictamente confidencial y no será compartida con terceros sin consentimiento expreso, excepto en los casos en que la ley lo exija.<br><br>
+      <strong>Protección de datos:</strong> Los datos personales serán tratados conforme a la normativa vigente de protección de datos (RGPD y LOPDGDD). Tienes derecho a acceder, rectificar, suprimir y portar tus datos en cualquier momento.<br><br>
+      <strong>Sesiones y cancelaciones:</strong> El/la participante se compromete a avisar con un mínimo de 24 horas en caso de cancelación de sesión. Las cancelaciones con menos antelación podrán ser facturadas.<br><br>
+      El/la participante declara que toda la información proporcionada en este cuestionario es veraz y completa, y que no ha ocultado ningún dato relevante para el diseño de su programa.
+    </div>
+
+    <div class="consent-checks">
+      <label class="consent-check-item">
+        <input type="checkbox" name="consent1" id="consent1" required>
+        <p><strong>He leído y comprendo el texto anterior.</strong> Consiento voluntariamente mi participación en el proceso del Método Integrativo CEC® creado por Kiko Martínez.</p>
+      </label>
+      <label class="consent-check-item">
+        <input type="checkbox" name="consent2" id="consent2" required>
+        <p><strong>Entiendo que este programa es complementario</strong> a cualquier tratamiento médico en curso y que no sustituye el consejo o tratamiento de ningún profesional sanitario.</p>
+      </label>
+      <label class="consent-check-item">
+        <input type="checkbox" name="consent3" id="consent3" required>
+        <p><strong>Autorizo el tratamiento de mis datos personales</strong> conforme a la normativa vigente de protección de datos (RGPD), con la finalidad exclusiva de gestionar mi proceso terapéutico.</p>
+      </label>
+      <label class="consent-check-item">
+        <input type="checkbox" name="consent4" id="consent4">
+        <p><strong>Deseo recibir comunicaciones</strong> relacionadas con el seguimiento de mi programa y novedades del Método CEC® por parte de Kiko Martínez. <em>(Opcional)</em></p>
+      </label>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="field">
+      <label>Lugar y fecha</label>
+      <input type="text" name="lugar_fecha" id="lugarFecha" placeholder="Ciudad, DD/MM/AAAA">
+    </div>
+
+    <div class="field">
+      <label>Firma del/la participante
+        <span class="hint">Dibuja tu firma con el dedo o el ratón en el espacio inferior.</span>
+      </label>
+      <div class="signature-wrap">
+        <canvas id="signatureCanvas" width="700" height="140"></canvas>
+        <div class="signature-controls">
+          <button type="button" class="btn-clear-sig" onclick="clearSignature()">✕ Borrar firma</button>
+        </div>
+      </div>
+      <input type="hidden" name="firma" id="firmaData">
+    </div>
+
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       ACCIONES FINALES
+  ════════════════════════════════════════════ -->
+  <div style="padding: 8px 0 32px;">
+    <div id="validationError" style="display:none; background:rgba(196,134,106,0.1); border:1px solid var(--clay-light); border-radius:var(--radius-sm); padding:16px 20px; margin-bottom:16px; color:#8B5A42; font-size:14px; line-height:1.6;">
+      ⚠ Por favor, revisa los campos obligatorios marcados en rojo antes de continuar.
+    </div>
+    <button type="button" class="btn-primary" onclick="generatePDF()">
+      Guardar y Descargar Cuestionario en PDF
+    </button>
+    <button type="button" class="btn-primary secondary" onclick="window.print()">
+      Imprimir / Guardar como PDF
+    </button>
+    <p style="text-align:center; font-size:12px; color:var(--light); margin-top:14px; line-height:1.7;">
+      📱 <strong style="color:var(--mid);">iPhone / iPad:</strong> pulsa el botón de arriba → selecciona <em>"Imprimir"</em> → pellizca para ampliar la vista previa → toca el icono compartir → <em>"Guardar en Archivos"</em>
+    </p>
+  </div>
+
+  </form>
+
+  <div class="form-footer">
+    Método Integrativo CEC® · Cuerpo · Emoción · Consciencia<br>
+    Creado por Kiko Martínez · Todos los derechos reservados<br>
+    <em>El cuerpo escucha. La emoción guía. La consciencia transforma.</em>
+  </div>
+
+</div><!-- /container -->
+
+<script>
+// ── TOGGLE SECTIONS ──
+function toggleSection(header) {
+  const section = header.parentElement;
+  section.classList.toggle('open');
+  updateProgress();
+}
+
+// ── GENDER CONDITIONAL ──
+function handleGender(radio) {
+  const female = document.getElementById('femaleFields1');
+  if (radio.value === 'mujer') {
+    female.classList.add('visible');
+  } else {
+    female.classList.remove('visible');
+  }
+}
+
+// ── SCALE BUTTONS ──
+function selectScale(name, value) {
+  const btns = document.querySelectorAll(`#${name}_scale .scale-btn`);
+  btns.forEach((b, i) => {
+    b.classList.toggle('selected', i + 1 === value);
+  });
+  const hidden = document.getElementById(`${name}_val`);
+  if (hidden) hidden.value = value;
+  updateProgress();
+}
+
+// ── ER-CEC TOTAL ──
+function updateERTotal() {
+  const vals = [
+    parseInt(document.getElementById('er1').value) || 0,
+    parseInt(document.getElementById('er2').value) || 0,
+    parseInt(document.getElementById('er3').value) || 0,
+    parseInt(document.getElementById('er4').value) || 0,
+    parseInt(document.getElementById('er5').value) || 0
+  ];
+  document.getElementById('er_total').textContent = vals.reduce((a, b) => a + b, 0);
+}
+
+// ── NUTRITION TOGGLE ──
+function toggleNutrition(checkbox) {
+  const fields = document.getElementById('nutritionFields');
+  fields.classList.toggle('visible', checkbox.checked);
+}
+
+// ── PROGRESS BAR ──
+function updateProgress() {
+  const required = document.querySelectorAll('input[required], textarea[required]');
+  let filled = 0;
+  required.forEach(el => {
+    if (el.type === 'checkbox') { if (el.checked) filled++; }
+    else if (el.value.trim() !== '') filled++;
+  });
+  const sections = document.querySelectorAll('.section');
+  let openCount = 0;
+  sections.forEach(s => { if (s.classList.contains('open')) openCount++; });
+  const pct = Math.round((openCount / sections.length) * 40 + (filled / Math.max(required.length, 1)) * 60);
+  const bar = document.getElementById('progressBar');
+  const txt = document.getElementById('progressText');
+  bar.style.width = Math.min(pct, 100) + '%';
+  txt.textContent = 'Completado: ' + Math.min(pct, 100) + '%';
+}
+
+// ── SIGNATURE ──
+(function() {
+  const canvas = document.getElementById('signatureCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let drawing = false;
+  let lastX = 0, lastY = 0;
+
+  function getPos(e) {
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    if (e.touches) {
+      return {
+        x: (e.touches[0].clientX - rect.left) * scaleX,
+        y: (e.touches[0].clientY - rect.top) * scaleY
+      };
+    }
+    return {
+      x: (e.clientX - rect.left) * scaleX,
+      y: (e.clientY - rect.top) * scaleY
+    };
+  }
+
+  function startDraw(e) {
+    e.preventDefault();
+    drawing = true;
+    const p = getPos(e);
+    lastX = p.x; lastY = p.y;
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+  }
+
+  function draw(e) {
+    if (!drawing) return;
+    e.preventDefault();
+    const p = getPos(e);
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.strokeStyle = '#2C2C2A';
+    ctx.lineTo(p.x, p.y);
+    ctx.stroke();
+    lastX = p.x; lastY = p.y;
+  }
+
+  function stopDraw(e) {
+    if (!drawing) return;
+    drawing = false;
+    document.getElementById('firmaData').value = canvas.toDataURL();
+  }
+
+  canvas.addEventListener('mousedown', startDraw);
+  canvas.addEventListener('mousemove', draw);
+  canvas.addEventListener('mouseup', stopDraw);
+  canvas.addEventListener('mouseleave', stopDraw);
+  canvas.addEventListener('touchstart', startDraw, { passive: false });
+  canvas.addEventListener('touchmove', draw, { passive: false });
+  canvas.addEventListener('touchend', stopDraw);
+})();
+
+window.clearSignature = function() {
+  const canvas = document.getElementById('signatureCanvas');
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  document.getElementById('firmaData').value = '';
+};
+
+// ── SET TODAY DATE ──
+(function() {
+  const today = new Date();
+  const dd = String(today.getDate()).padStart(2, '0');
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const yyyy = today.getFullYear();
+  const lf = document.getElementById('lugarFecha');
+  if (lf && !lf.value) lf.placeholder = `Ciudad, ${dd}/${mm}/${yyyy}`;
+})();
+
+// ── VALIDATION ──
+function validateForm() {
+  let valid = true;
+  const required = document.querySelectorAll('[required]');
+  required.forEach(el => {
+    const field = el.closest('.field') || el.closest('.consent-check-item');
+    if (!field) return;
+    if (el.type === 'checkbox') {
+      if (!el.checked) {
+        field.classList.add('has-error');
+        valid = false;
+      } else {
+        field.classList.remove('has-error');
+      }
+    } else {
+      if (!el.value.trim()) {
+        field.classList.add('has-error');
+        valid = false;
+      } else {
+        field.classList.remove('has-error');
+      }
+    }
+  });
+
+  // Check consent checkboxes
+  const c1 = document.getElementById('consent1');
+  const c2 = document.getElementById('consent2');
+  const c3 = document.getElementById('consent3');
+  if (!c1.checked || !c2.checked || !c3.checked) {
+    valid = false;
+  }
+
+  return valid;
+}
+
+// ── GENERATE PDF ──
+window.generatePDF = function() {
+  // Validate consent first
+  const c1 = document.getElementById('consent1');
+  const c2 = document.getElementById('consent2');
+  const c3 = document.getElementById('consent3');
+  if (!c1.checked || !c2.checked || !c3.checked) {
+    document.getElementById('validationError').style.display = 'block';
+    document.getElementById('validationError').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+  document.getElementById('validationError').style.display = 'none';
+
+  // Open all sections for a complete print
+  document.querySelectorAll('.section').forEach(s => s.classList.add('open'));
+
+  // Save signature
+  const canvas = document.getElementById('signatureCanvas');
+  if (canvas) document.getElementById('firmaData').value = canvas.toDataURL();
+
+  // iOS Safari: print dialog = "Save as PDF" via Share Sheet
+  // A small delay ensures DOM has re-rendered open sections
+  setTimeout(function() {
+    window.print();
+  }, 400);
+};
+
+// ── IMC AUTO-CALCULATION ──
+function calcIMC() {
+  const pesoInput = document.querySelector('[name="peso_kg"]');
+  const tallaInput = document.querySelector('[name="talla_cm"]');
+  const resultBox = document.getElementById('imcResultBox');
+  const catBox = document.getElementById('imcCategoryBox');
+  const hiddenVal = document.getElementById('imcHiddenVal');
+  if (!pesoInput || !tallaInput || !resultBox) return;
+
+  const peso = parseFloat(pesoInput.value);
+  const talla = parseFloat(tallaInput.value) / 100;
+
+  if (peso > 0 && talla > 0) {
+    const imc = (peso / (talla * talla)).toFixed(1);
+    hiddenVal.value = imc;
+    resultBox.textContent = imc;
+
+    let cat = '';
+    let color = 'var(--sage-dark)';
+    if (imc < 18.5)      { cat = 'Bajo peso';                   color = '#7A6240'; }
+    else if (imc < 25)   { cat = 'Normopeso ✓';                 color = 'var(--sage-dark)'; }
+    else if (imc < 30)   { cat = 'Sobrepeso';                   color = '#8B5A42'; }
+    else if (imc < 35)   { cat = 'Obesidad grado I';            color = '#8B4040'; }
+    else if (imc < 40)   { cat = 'Obesidad grado II';           color = '#8B2020'; }
+    else                 { cat = 'Obesidad grado III (mórbida)'; color = '#8B2020'; }
+
+    catBox.textContent = cat;
+    catBox.style.color = color;
+    resultBox.style.color = color;
+    resultBox.style.borderColor = color;
+  } else {
+    resultBox.textContent = '—';
+    catBox.textContent = '';
+    hiddenVal.value = '';
+    resultBox.style.color = 'var(--sage-dark)';
+    resultBox.style.borderColor = 'var(--border)';
+  }
+}
+
+// Attach IMC listeners after DOM ready
+document.addEventListener('DOMContentLoaded', function() {
+  const pesoInput = document.querySelector('[name="peso_kg"]');
+  const tallaInput = document.querySelector('[name="talla_cm"]');
+  if (pesoInput) pesoInput.addEventListener('input', calcIMC);
+  if (tallaInput) tallaInput.addEventListener('input', calcIMC);
+});
+
+// ── REAL-TIME PROGRESS ──
+document.getElementById('cecForm').addEventListener('input', updateProgress);
+document.getElementById('cecForm').addEventListener('change', updateProgress);
+
+// Init
+updateERTotal();
+updateProgress();
+</script>
+</body>
+</html>
